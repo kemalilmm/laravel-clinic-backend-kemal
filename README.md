@@ -13,6 +13,7 @@ Project Ini Dibuat untuk menyelesaikan tugas bootcamp FIC 15 dari jagoflutter.co
 ## Instalasi Project
 1. Composer Install
 2. php artisan key:generate
+3. php artisan migrate
 
 ## About Laravel
 
