@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/home',function(){
-        return view('dashboard');
-    })->name('home');
+    // Route::get('/home',function(){
+    //     return view('dashboard');
+    // })->name('home');
     Route::resource('user',UserController::class);
     Route::resource('doctor',DoctorController::class);
 });

@@ -60,6 +60,9 @@
                                             <tr>
 
                                                 <th>Doctor Name</th>
+                                                <th>
+                                                    Doctor Photo
+                                                </th>
                                                 <th>Doctor Specialist</th>
                                                 <th>Doctor Email</th>
                                                 <th>SIP</th>
@@ -71,6 +74,10 @@
                                                 <tr>
 
                                                     <td>{{ $doctor->doctor_name }}
+                                                    </td>
+                                                    <td>
+                                                        <img width="200px" src="{{asset('storage/'.$doctor->photo)}}" alt="">
+
                                                     </td>
                                                     <td>
                                                         {{ $doctor->doctor_specialist }}
@@ -119,14 +126,5 @@
 @endsection
 
 @push('scripts')
-    <!-- JS Libraies -->
-    <script src="{{ asset('library/selectric/public/jquery.selectric.min.js') }}"></script>
 
-    <!-- Page Specific JS File -->
-    <script src="{{ asset('js/page/features-posts.js') }}"></script>
-    <script src="{{ asset('js/page/modules-datatables.js') }}"></script>
-    <script src="{{ asset('library/datatables/media/js/jquery.dataTables.min.js') }}"></script>
-    {{-- <script src="{{ asset() }}"></script> --}}
-    {{-- <script src="{{ asset() }}"></script> --}}
-    <script src="{{ asset('library/jquery-ui-dist/jquery-ui.min.js') }}"></script>
 @endpush

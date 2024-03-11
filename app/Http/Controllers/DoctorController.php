@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DoctorController extends Controller
 {
@@ -82,6 +83,11 @@ class DoctorController extends Controller
         $doctor->doctor_email         = $request->doctor_email;
         $doctor->sip                  = $request->sip;
         $doctor->doctor_specialist    = $request->doctor_specialist;
+        if (!empty($doctor->photo)) {
+            Storage::delete($doctor->photo);
+        }
+        $path = $request->file('photo')->store('public/images');
+        $doctor->photo = str_replace('public/', '', $path);
         $doctor->save();
         return redirect()->route('doctor.index')->with('success', "Doctor {$request->name} updated successfully");
     }
