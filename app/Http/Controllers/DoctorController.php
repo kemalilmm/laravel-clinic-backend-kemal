@@ -48,6 +48,9 @@ class DoctorController extends Controller
         return redirect()->route('doctor.index')->with('success', "Doctor {$request->name} inserted successfully");
     }
 
+    /**
+     * Display the specified resource.
+     */
     public function show(string $id)
     {
         //
