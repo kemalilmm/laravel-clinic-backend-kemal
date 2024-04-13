@@ -22,6 +22,10 @@
                         <a class="nav-link"
                             href="{{ route('doctor.index') }}">Doctor's Management</a>
                     </li>
+                    <li class=''>
+                        <a class="nav-link"
+                            href="{{ route('doctor-schedules.index') }}">Doctor's Schedule</a>
+                    </li>
                 </ul>
             </li>
 

@@ -46,6 +46,13 @@ class DoctorController extends Controller
         $doctor->sip                  = $request->sip;
         $doctor->doctor_specialist    = $request->doctor_specialist;
         $doctor->save();
+        $doctorId = $doctor->id;
+        if ($request->hasFile('photo')) {
+            $image = $request->file('photo');
+            $image->storeAs('public/doctors', $doctorId . '.' . $image->getClientOriginalExtension());
+            $doctor->photo = 'storage/doctors/' . $doctorId . '.' . $image->getClientOriginalExtension();
+            $doctor->save();
+        }
         return redirect()->route('doctor.index')->with('success', "Doctor {$request->name} inserted successfully");
     }
 
@@ -84,11 +91,12 @@ class DoctorController extends Controller
         $doctor->sip                  = $request->sip;
         $doctor->doctor_specialist    = $request->doctor_specialist;
         if ($request->hasFile('photo')) {
-        if (!empty($doctor->photo)) {
-            Storage::delete($doctor->photo);
-        }
-        $path = $request->file('photo')->store('public/images');
-        $doctor->photo = str_replace('public/', '', $path);
+            if (!empty($doctor->photo)) {
+                Storage::delete($doctor->photo);
+            }
+            $image = $request->file('photo');
+            $image->storeAs('public/doctors', $doctor->id . '.' . $image->getClientOriginalExtension());
+            $doctor->photo = 'storage/doctors/' . $doctor->id . '.' . $image->getClientOriginalExtension();
         }
         $doctor->save();
         return redirect()->route('doctor.index')->with('success', "Doctor {$request->name} updated successfully");

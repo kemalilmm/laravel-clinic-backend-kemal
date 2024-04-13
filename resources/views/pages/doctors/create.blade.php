@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Advanced Forms')
+@section('title', 'Add Doctor')
 
 @push('style')
     <!-- CSS Libraries -->
@@ -30,7 +30,7 @@
 
 
                 <div class="card">
-                    <form action="{{ route('doctor.store') }}" method="POST">
+                    <form action="{{ route('doctor.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card-header">
                             <h4>Input Text</h4>
@@ -89,6 +89,42 @@
                                         {{ $message }}
                                     </div>
                                 @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>ID IHS</label>
+                                <input type="text"
+                                    class="form-control @error('id_ihs')
+                                is-invalid
+                            @enderror"
+                                    name="id_ihs">
+                                @error('id_ihs')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>NIK</label>
+                                <input type="text"
+                                    class="form-control @error('nik')
+                                is-invalid
+                            @enderror"
+                                    name="nik">
+                                @error('nik')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="inputGroupFile01">Doctor Photo</label>
+                                <div class="custom-file">
+                                    <input type="file" name="photo" class="custom-file-input" id="customFile" value="">
+                                    <label class="custom-file-label" for="customFile">
+
+                                            Choose File
+                                    </label>
+                                </div>
                             </div>
 
                         </div>

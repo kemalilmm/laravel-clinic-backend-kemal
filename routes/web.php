@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 /*
@@ -18,10 +19,9 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-    // Route::get('/home',function(){
-    //     return view('dashboard');
-    // })->name('home');
+    // Route::resource('home',DoctorController::class);
     Route::resource('user',UserController::class);
     Route::resource('doctor',DoctorController::class);
+    Route::resource('doctor-schedules',DoctorScheduleController::class);
 });
 
